@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Dongle:wght@300;400&family=Open+Sans:ital,wght@0,300;0,400;1,300;1,400;1,500&family=Poppins:ital,wght@1,200;1,600&family=Raleway:ital,wght@0,400;0,500;0,600;0,700;1,300;1,400;1,500;1,700&family=Smooch+Sans:wght@700&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Ysabeau:ital,wght@1,400;1,500&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/7aff0d4601.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div class="preNav">
+            <small>Phone no:<span> +2347032834576</span> or email us:<span>ifeomaobodozie3@gmail.com</span></small>
+
+        </div>
+
+           <nav class="navbar flex-row" id="navbar">
+            <div class="bar">
+                <i class="fa-solid fa-bars" id= "menuIcon"></i>
+                <i class="fa-solid fa-times" id="close-menu"></i>
+            </div>
+            <h2 class="logo">OmaRestaurant</h2>
+            <ul id="nav-list">
+                <li><a href="#home"class ="active">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#menu">Menu</a></li>
+                <li><a href="#reservation">Reservation</a></li>
+                <li><a href="#blog">Blog</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+
+                <div class="nav-btn flex-row">
+
+                    <div class="search-wrapper">
+                        <i class="fa-solid fa-magnifying-glass searchBtn" ></i>
+                        <div class="search-box">
+                            <form action="#">
+                                <input type="text" placeholder="Search">
+                                <i class="fa-solid fa-magnifying-glass searchIcon" ></i>
+                            </form>
+                        </div>
+                    </div>
+
+                          <!-- CART WRAPPER  -->
+                 <div class="cart-wrapper">
+                    <i class="fa-solid fa-cart-shopping cartBtn"></i>
+                    <div class="cart-box">
+                        <div class="cart-info" id="cart-info">
+                        
+                          <div class="item" id= "item">
+                              
+                              <!-- <div class="image">
+                                <img src="./images/pix3.jpg">
+                            </div>
+                
+                            <div id="price">
+                                <p>$20</p>
+                            </div>
+                
+                            <div id="quantity">
+                                <button>-</button>
+                                <p>2</p>
+                                <button>+</button>
+                            </div> -->
+                
+                                            </div> 
+
+                      <div class="total" id="total">
+                        <!-- <h4 id="total-menu">Number of Menu :</h4>
+                          <h4 id="cart-amount">Total Price : $160</h4> -->
+                      </div>
+
+                      <div class="menu-Message">
+                         <h4 id="checkOutMessage"></h4>
+                      </div>
+
+                  <div class="check-out">
+                      <button id="checkOut">Check Out</button>
+                  </div>
+       
+                        </div>
+                        </div> 
+                 </div>
+
+                    <div class="mode-wrapper">
+                        <i class="fa-solid fa-moon moonIcon"></i>
+                    </div>
+                 
+                </div>
+           </nav>
+    </header>
+
+             <!-------------------------------- HOME PAGE  -------------------------->
+           <section id="home">
+            <div class="home-box">
+           <div class="slide active flex-row slide1">
+            <div class="home-content flex-row">
+                <h1>Good Food Before Coding</h1>
+                <p>Come with family & friends and enjoy our mouthwatering food</p>
+                <a href="#menu"><button class="btn1">View Our Menu</button></a>
+               </div>
+            </div>
+
+        <div class="slide flex-row slide2">
+           <div class="home-content flex-row">
+            <h1> Good Food Offer Great Smile</h1>
+            <p>Come with family & friends and enjoy our mouthwatering food</p>
+            <a href="#menu"><button class="btn1">View Our Menu</button></a>
+           </div>
+        </div>
+    </div>
+     <div id="bookTable">
+          <div class="bookTable-border"></div>
+            <a href="#reservation"><img src="./images/book8.jpg" alt=""></a>
+           <a href="#reservation"><small>Book A Table</small></a>   
+        </div>
+
+    <div id="bars">
+        <i class="fa-solid fa-angle-left" id="leftArrow"></i>
+        <i class="fa-solid fa-angle-right" id="rightArrow"></i> 
+    </div>
+   
+           </section>
+            
+
+      <!-------------------------------- ABOUT PAGE  -------------------------->
+
+      <section id="about">
+
+         <div class="container flex-row">
+            <div class="left-col flex-row">
+                <h2>Every Flavor Tells A Story</h2>
+                <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                     Hic et perferendis atque? Magni, et quae, quibusdam officiis rerum
+                      ea minus rem qui distinctio aliquam sunt velit odit? Modi, eum mollitia!</p>
+                <small>Book through call</small>
+                <span><a href="tel:+2347032834576">+2347032834576</a></span>
+                <button> Read More</button>
+            </div>
+
+            <div class="right-col">
+                <img src="./images/pix2.avif">
+
+                <div class="bottom-img">
+                    <img src="./images/pix1.avif">
+                   </div>
+            </div>
+         </div>
+         
+           <article class="features">
+            <h3>Why You Should Choose Us</h3>
+            <div class="container">
+            <div class="box">
+                <h5>Hygienic Food</h5>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            </div>
+            <div class=" box">
+                 
+                <h5>Serene Environment</h5>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. </p>
+            </div>
+            <div class=" box">
+                <h5>Skilled chefs</h5>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            </div>
+            <div class=" box">
+               
+                <h5>Events & Party </h5>
+                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit.</p>
+            </div>
+           </div>
+           </article>
+      </section>
+
+      <!---------MENU START HERE ----------->
+      <section id="menu" class="section1">
+           <h2>Our Menu List</h2>
+      <article class="container">
+
+        <div class="btn-container">
+        <button class="filter-btn active" id ="all">All</button>
+        <button class="filter-btn" id ="drinks">Drinks</button>
+        <button class="filter-btn"id ="main course">Main Course</button>
+        <button class="filter-btn"id ="dessert">Dessert</button>
+        <button class="filter-btn"id ="appetizer">Appetizer</button>
+        </div>
+
+         <div class="item-center">        
+        <!-- <div class="single-item flex-row">
+
+              <div class="image">
+                <img src="./images/pix3.jpg">
+              </div>
+         
+          <div class="item-content">
+        <div class="item-name flex-row">
+            <h4 id="name">Chicken Suya</h4>
+            <h5 id="price">$20</h5>
+        </div>
+        <hr>
+
+        <div class="item-info">
+         <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    
+    </div>
+        </div> -->
+        </div>
+    
+      </article>
+
+
+
+      </section>
+
+
+         <!-- Reservation Starts Here -->
+     <section id="reservation" class="section1">
+         <div class="container">
+            <form action="#" id="bookATable">
+                <h2>Online Reservation</h2>
+               <div class="input-wrapper">
+                <input type="text" name="name" placeholder="Name" id="inputName">
+                <input type="tel" name="Phone" placeholder="Phone" id="inputTel">
+               </div>
+              <div class="input-wrapper">
+                <select name="No of Person" id="#">
+                    <option selected disabled>No of Person</option>
+                    <option value="2 Persons">2 Persons</option>
+                    <option value="3-4 Persons">3-4 Persons</option>
+                    <option value="5-7 Persons">5-7 Persons</option>
+                    <option value="8-9 Persons">8-9 Persons</option>
+                </select>
+                <input type="date" name="date" placeholder="Date" id="inputDate">
+                <input type="time" name="time" placeholder="Time"id="inputTime">
+              </div>
+                <div class="input-wrapper">
+                    <textarea name="msg" id="inputMsg" placeholder="Message"></textarea>
+                </div>
+                <button type="submit" id="bookATable">Book A Table</button>
+            </form>
+            <p id="result-table"></p>
+         </div>
+
+     </section>
+
+<!------------------ Reservation Ends Here ------------------------>
+
+
+<!---------------BLOG START HERE  ------------->
+<section id="blog" class="section1">
+<article class="prof">
+    <h2>Meet Our Professional</h2>
+    <div class="prof-container flex-row">
+        <div class="chef">
+            <img src="./images/person1.jpg">
+
+            <div class="socials flex-row">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+            
+        <div class="chef-info">
+            <h5>Suzane George</h5>
+            <p> Indian Cuisine</p>
+        </div>
+    </div>
+
+    <div class="chef">
+        <img src="./images/person3.webp">
+       <div class="socials flex-row">
+                <i class="fa-regular fa-heart"></i>
+                <i class="fa-brands fa-instagram"></i>
+                <i class="fa-brands fa-facebook"></i>
+            </div>
+    <div class="chef-info">
+        <h5>Jack Robinson</h5>
+        <p>Chinese Cuisine</p>
+    </div>
+</div>
+
+<div class="chef">
+    <img src="./images/person4.jpg">
+    <div class="socials flex-row">
+        <i class="fa-regular fa-heart"></i>
+        <i class="fa-brands fa-instagram"></i>
+        <i class="fa-brands fa-facebook"></i>
+    </div>
+<div class="chef-info">
+    <h5>Alberto Chris</h5>
+    <p>Italian Cuisine</p>
+</div>
+</div>
+    </div>
+</article>
+
+     <article class="testimonial">
+        <h2>What Clients Say About Us</h2>
+  
+        <div class="test-container">
+
+
+                <div class="box">
+                    <img src="./images/person1.jpg">
+                    <h5>Anna James</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Incidunt officiis tempora illo non eveniet ad suscipit 
+                         ipsum nisi blanditiis modi!</p>
+                </div>
+            
+                <div class="box">
+                    <img src="./images/person2.jpg">
+                    <h5>Anna James</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Incidunt officiis tempora illo non eveniet ad suscipit 
+                         ipsum nisi blanditiis modi!</p>
+                </div>
+       
+
+        
+                <div class="box">
+                    <img src="./images/person3.webp">
+                    <h5>Anna James</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                         Incidunt officiis tempora illo non eveniet ad suscipit 
+                         ipsum nisi blanditiis modi!</p>
+                </div>
+    
+
+         
+
+        </div>
+      
+        
+     </article>
+
+     <article class="recipe">
+        <h2>Chef's Recommended</h2>
+        <div class="recipe-container flex-row">
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="./images/pix8.jpg">
+                </div>
+                <div class="card-info">
+                   <h4>Fruit Punch</h4>
+                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                     Aliquid, tempore!</p>
+                    <p>Time: 5mins</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="./images/pix7.jpg">
+                </div>
+                <div class="card-info">
+                   <h4>Fruit Punch</h4>
+                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Aliquid, tempore!</p>
+                    <p>Time: 5mins</p>
+                </div>
+            </div>
+
+            <div class="card">
+                <div class="card-image">
+                    <img src="./images/pix9.webp">
+                </div>
+                <div class="card-info">
+                   <h4>Fruit Punch</h4>
+                   <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                    Aliquid, tempore!</p>
+                    <p>Time:5mins</p>
+                </div>
+            </div>
+
+        </div>
+     </article>
+    </section>
+
+
+                    <!-- CONTACT STARTS HERE -->
+        <section id="contact" class="section1">
+               
+            <div class="contact-container">
+                <div class="col">
+                    <h4 class="logo">OmaRestaurant</h4>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+                        Facere molestias accusantium laboriosam in. 
+                        Vero asperiores illo non fugiat, quibusdam maxime.</p>
+                    <div class="social-media">
+                        <a href="#"><i class="fa-brands fa-facebook"></i></a>
+                        <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                        <a href="#"><i class="fa-brands fa-twitter"></i></a>
+                        <a href="#"><i class="fa-brands fa-youtube"></i></a>
+                    </div>
+                </div>
+
+
+        <div class="col">
+            <h4>ADDRESS</h4>
+            <P>243b Sanusi Fahuna street <br> victoria Island, Lagos</P>
+            <p>omarestaurant@gmail.com</p>
+            <p> +2347032834576 </p>
+         
+        </div>
+
+        
+        <div class="col">
+            <h4>OPEN HOURS</h4>
+               
+            <ul class="">
+                <li>
+                    <p>Monday</p>
+                <div>10:00am - 8:00pm</div></li>
+                <li>
+                    <p>Tuesday</p>
+                <div>10:00am - 8:00pm</div>
+                </li>
+                <li><p>Wednesday</p>
+                    <div>10:00am - 8:00pm</div>
+                </li>
+                <li><p>Thursday</p>
+                    <div>10:00am - 8:00pm</div>
+                </li>
+                <li><p>Friday</p>
+                    <div>10:00am - 2:00am</div></li>
+                <li>
+                    <p>Saturday</p>
+                <div>10:00am - 2:00am</div>
+                </li>
+                <li>
+                    <p>Sunday</p>
+                <div>closed</div>
+                </li>
+            </ul>
+         
+        </div>
+
+
+
+        <div class="col">
+            <h4>More Info</h4>
+            <p>Menu</p>
+            <p>About</p>
+            <p>Reservation</p>
+            <p>Blogs</p>
+           
+        </div>
+
+            </div>
+              
+
+
+        
+        </section>
+
+        <section id="footer">
+                <p> &copy; 2023 Oma. All rights reserved | Created By Ifeoma</p>
+        </section>
+
+
+    <script src="app.js"></script>    
+    <script src="index.js"></script>
+</body>
+</html>
