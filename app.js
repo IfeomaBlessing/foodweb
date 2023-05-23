@@ -158,9 +158,10 @@ const Menus =[
 let itemCenter = document.querySelector(".item-center");
 let filterBtns = document.querySelectorAll(".filter-btn");
 let cartItem = document.getElementById("item");
+let label= document.getElementById("label");
 let total = document.getElementById("total");
 let checkOut = document.getElementById("checkOut");
-let checkOutMessage = document.getElementById("checkOutMessage");
+
 
 window.addEventListener("DOMContentLoaded",function(){
 showMenu();
@@ -220,101 +221,152 @@ function showMenu(){
    
 
 
-    let cart =[];
+    let cart = JSON.parse(localStorage.getItem("Objects")) || [];
+     updateCart();
 
+     
 
     function addToCart(id){
       if(cart.some((menuSelected)=>menuSelected.id === id)){
          const addItem = cart.find((y)=> y.id=== id);
          addItem.numberOfUnit +=1;
+       
       }
       else{
+
         const menuSelected = Menus.find((x)=> x.id=== id);
 
         cart.push({
             ...menuSelected,
             numberOfUnit:1,});
       };
-      
-         
+
            updateCart();
     }
 
-    function updateCart(){
-        renderCartItems();
-        Total();
-    }
-
-    function renderCartItems(){
-        return(cartItem.innerHTML = cart.map(function(x){
-           return `
-           
-         <i class="fa-solid fa-trash-can"></i>              
-           <div class="image">
-             <img src="${x.imgSrc}">
-         </div>
-
-         <div id="price">
-             <p>$${x.price}</p>
-         </div>
-
-         <div id="quantity">
-             <button onclick = "decrement(${x.id})">-</button>
-             <p>${x.numberOfUnit}</p>
-             <button onclick = "increment(${x.id})">+</button>
-         </div> 
-
-                         
-           `
-        })
-           .join("")
-        )};
-    
+        
 function increment(id){
-    const addItem = cart.find((y)=> y.id=== id);
-        addItem.numberOfUnit +=1;
+    const menuItem = cart.find((y)=> y.id=== id);
+        menuItem.numberOfUnit +=1;
 
     updateCart();
+    renderCartItems();
 }
 
 function decrement(id){
-    const reduceItem = cart.find((y)=> y.id=== id);
-    if(reduceItem.numberOfUnit === 0)return;
+    const menuItem = cart.find((y)=> y.id=== id);
+    if(menuItem.numberOfUnit === 0)return;
     else{
-        reduceItem.numberOfUnit -=1;
+        menuItem.numberOfUnit -=1;
     }
-     
+
+    cart = cart.filter((x)=>x.numberOfUnit !== 0)
+    // ONCE THE NUMBER OF UNIT IS REDUCED TO 0, THE ITEM IS REMOVED FROM THE CART
+    renderCartItems()
     updateCart();
+ 
 }
 
-function Total(){
-    let totalPrice = 0,
-    totalMenu = 0;
 
-    cart.forEach(function(x){
+    function updateCart(){
+        renderCartItems();
+        calculation();
+        totalAmount();
+
+        localStorage.setItem("Objects", JSON.stringify(cart));
+    }
+
+
+    
+function renderCartItems(){
+    // IF THE CART IS NOT EMPTY, THEN IT RUNS THIS
+    if(cart.length !== 0){
+        return(cartItem.innerHTML = cart.map(function(x){
+            return `
+            
+          <i class="fa-solid fa-trash-can" onclick = "removeMenu(${x.id})"></i>              
+            <div class="image">
+              <img src="${x.imgSrc}">
+          </div>
+ 
+          <div id="unit-price">
+              <p>$${x.price}</p>
+          </div>
+ 
+          <div id="quantity">
+              <button onclick = "decrement(${x.id})">-</button>
+              <p>${x.numberOfUnit}</p>
+              <button onclick = "increment(${x.id})">+</button>
+          </div> 
+ 
+          <div id="subtotal-price">
+          <p>$${x.numberOfUnit * x.price}</p>
+      </div>
+                          
+            `
+         })
+            .join("")
+         )
+    }
+    else{
+        // BUT IF THE CART IS EMPTY, IT RUS THIS
+        cartItem.innerHTML = ` 
+        <h4>Cart Is Empty</h4>
+        <a href="#menu"> Check Out Our Menu</a>
+        `
+    };
+}
+
+function removeMenu(id){
+    cart = cart.filter((x)=>x.id !== id)
+    // ONCE THE DELETE BUTTON IS CLICKED, IT REMOVES THE ITEM FROM THE CART AND 
+    // MAKE SURE TO CALL THE FUNCTION OF THE CART & CALCULATION SO IT REOMVES IT FROM THE CART AND LOCAL STORAGE AND UPDATE THE CART AMOUNT
+    renderCartItems();
+    calculation();
+
+    localStorage.setItem("Objects", JSON.stringify(cart));
+    
+}
+
+
+function calculation(){
+    let cartAmount = document.getElementById("cartAmount");
+    // REDUCE METHOD ADDS THE NUMBER OF ITEMS IN THE CART
+    // a IS THE PREVIOUS NUMBER WHILE b IS THE NEXT NUMBER
+    // 0(ZERO) IS A DEFAULT NUMBER, HENCE CALCULATION STARTS FROM ZERO(0)
+    cartAmount.innerHTML = (cart.map((x)=> x.numberOfUnit).reduce((a,b)=> a + b, 0));
+    // let totalPrice = 0,
+    // totalMenu = 0;
+
+    // cart.map(function(x){
         
-        totalMenu += x.numberOfUnit;
-        totalPrice += x.price * x.numberOfUnit;
-    });
+    //     totalMenu += x.numberOfUnit;
+    //     totalPrice += x.price * x.numberOfUnit;
+    // });
        
        
-       total.innerHTML =  `
-       <h4 id="total-menu">Number of Menu : ${totalMenu}</h4>
-         <h4 id="total-price">Total Price : $${totalPrice}</h4>
-              
-       `
+    //    total.innerHTML =  `
+    //    <h4 id="total-menu">Number of Menu : ${totalMenu}</h4>
+    //      <h4 id="total-price">Total Price : $${totalPrice}</h4>   
+    //    `
+    //    checkOut.innerHTML = ` <button id="checkBtn" onclick = checkOut()>Check Out</button> ` 
+
 }; 
 
-checkOut.addEventListener("click", function(){
- 
-    cartItem.innerHTML = " ";
-    total.innerHTML = " ";
-    checkOutMessage.innerHTML = "Menu Received!!!"
-})
-    
+function totalAmount(){
+    if(cart.length !== 0){
+        let totalMenu = cart.map((x)=>{
+       return     x.numberOfUnit;
+        });
+
+        console.log(totalMenu);
+    }
+    else{}
+}
+
+
+
         
-
-
 
 
 
