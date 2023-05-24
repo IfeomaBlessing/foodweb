@@ -195,7 +195,7 @@ function showMenu(){
        <div class="single-item flex-row">
     
                 <div class="image">
-              <img src="${menu.imgSrc}">
+              <img src="${menu.imgSrc}" onclick = "addToCart(${menu.id})">
               <div class="cartIcon">
               <i class="fa-solid fa-heart" onclick = "addToCart(${menu.id})"></i>
           </div>
