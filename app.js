@@ -157,9 +157,10 @@ const Menus =[
 
 let itemCenter = document.querySelector(".item-center");
 let filterBtns = document.querySelectorAll(".filter-btn");
-let cartItem = document.getElementById("item");
+let cartItem = document.getElementById("cartItem");
 let label= document.getElementById("label");
-let total = document.getElementById("total");
+let totalMenu = document.getElementById("total-menu");
+let totalAmount = document.getElementById("total-amount");
 let checkOut = document.getElementById("checkOut");
 
 
@@ -219,14 +220,12 @@ function showMenu(){
     )};
 
    
-
-
-    let cart = JSON.parse(localStorage.getItem("Objects")) || [];
-     updateCart();
+let cart = JSON.parse(localStorage.getItem("Objects")) || [];
+ updateCart();
 
      
 
-    function addToCart(id){
+function addToCart(id){
       if(cart.some((menuSelected)=>menuSelected.id === id)){
          const addItem = cart.find((y)=> y.id=== id);
          addItem.numberOfUnit +=1;
@@ -241,8 +240,9 @@ function showMenu(){
             numberOfUnit:1,});
       };
 
+      cartAmount.innerHTML = (cart.map((x)=> x.numberOfUnit).reduce((a,b)=> a + b, 0));
            updateCart();
-    }
+ }
 
         
 function increment(id){
@@ -271,8 +271,9 @@ function decrement(id){
     function updateCart(){
         renderCartItems();
         calculation();
-        totalAmount();
-
+        totalPrice();
+        totalItem();
+        
         localStorage.setItem("Objects", JSON.stringify(cart));
     }
 
@@ -283,8 +284,11 @@ function renderCartItems(){
     if(cart.length !== 0){
         return(cartItem.innerHTML = cart.map(function(x){
             return `
-            
-          <i class="fa-solid fa-trash-can" onclick = "removeMenu(${x.id})"></i>              
+            <div class="item" id= "item">
+            <div class="cancel">
+            <i class="fa-solid fa-trash-can" onclick = "removeMenu(${x.id})"></i>
+        </div>
+                     
             <div class="image">
               <img src="${x.imgSrc}">
           </div>
@@ -302,7 +306,8 @@ function renderCartItems(){
           <div id="subtotal-price">
           <p>$${x.numberOfUnit * x.price}</p>
       </div>
-                          
+                 
+      </div>
             `
          })
             .join("")
@@ -312,8 +317,13 @@ function renderCartItems(){
         // BUT IF THE CART IS EMPTY, IT RUS THIS
         cartItem.innerHTML = ` 
         <h4>Cart Is Empty</h4>
-        <a href="#menu"> Check Out Our Menu</a>
         `
+        checkOut.innerHTML = ` <button id="checkBtn"><a href="#menu"> Check Out Our Menu</a></button> ` 
+
+        totalAmount.innerHTML =`  `
+       
+        totalMenu.innerHTML =`  `
+
     };
 }
 
@@ -323,6 +333,9 @@ function removeMenu(id){
     // MAKE SURE TO CALL THE FUNCTION OF THE CART & CALCULATION SO IT REOMVES IT FROM THE CART AND LOCAL STORAGE AND UPDATE THE CART AMOUNT
     renderCartItems();
     calculation();
+    totalPrice();
+    totalItem();
+ 
 
     localStorage.setItem("Objects", JSON.stringify(cart));
     
@@ -335,41 +348,75 @@ function calculation(){
     // a IS THE PREVIOUS NUMBER WHILE b IS THE NEXT NUMBER
     // 0(ZERO) IS A DEFAULT NUMBER, HENCE CALCULATION STARTS FROM ZERO(0)
     cartAmount.innerHTML = (cart.map((x)=> x.numberOfUnit).reduce((a,b)=> a + b, 0));
-    // let totalPrice = 0,
-    // totalMenu = 0;
-
-    // cart.map(function(x){
-        
-    //     totalMenu += x.numberOfUnit;
-    //     totalPrice += x.price * x.numberOfUnit;
-    // });
-       
-       
-    //    total.innerHTML =  `
-    //    <h4 id="total-menu">Number of Menu : ${totalMenu}</h4>
-    //      <h4 id="total-price">Total Price : $${totalPrice}</h4>   
-    //    `
-    //    checkOut.innerHTML = ` <button id="checkBtn" onclick = checkOut()>Check Out</button> ` 
 
 }; 
 
-function totalAmount(){
+function totalPrice(){
     if(cart.length !== 0){
-        let totalMenu = cart.map((x)=>{
-       return     x.numberOfUnit;
-        });
+        let totalPrice = cart.map((x)=>{
+       return  x.numberOfUnit * x.price;
+        }).reduce((a,b)=>a + b, 0);
+          
+        totalAmount.innerHTML =`
+        <div class = "menu">
+        <h4 id="total-menu">Total Menu:</h4>
+        <h4>${totalPrice}</h4>
+    </div>
+        `
+        checkOut.innerHTML = ` <button id="orderBtn" onclick = "checkout()">Check Out</button>
+        <button id="clearBtn" onclick = "clearCart()">Clear Cart</button> ` 
 
-        console.log(totalMenu);
+
     }
-    else{}
+    else return;
+
+  
 }
 
 
+function totalItem(){
+    if(cart.length !== 0){
+        let totalItem = cart.map((x)=>{
+       return  x.numberOfUnit;
+        }).reduce((a,b)=>a + b, 0);
+          
+        totalMenu.innerHTML =`
+       
+
+        <div class = "menu">
+                            <h4 id="total-menu">Total Menu:</h4>
+                            <h4>${totalItem}</h4>
+                        </div>
+        `
+ 
+ 
+    }
+    else return;
+
+
+}
 
         
+function checkout(){
+   cart = [];
+     cartItem.innerHTML = ` 
+        <h4>Order Successfully Placed</h4>
+        `
+        totalAmount.innerHTML =` `
+        totalMenu.innerHTML =`  `
+        checkOut.innerHTML = `  ` 
 
+        calculation();
+     localStorage.setItem("Objects", JSON.stringify(cart));
+}
 
-
+function clearCart(){
+    cart = [];
+     renderCartItems();
+ 
+     calculation();
+      localStorage.setItem("Objects", JSON.stringify(cart));
+ }
 
 
 

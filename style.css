@@ -82,6 +82,7 @@ p{
 }
 body{
     width: 100%;
+    min-height: 100vh;
     background:var(--bg-color1);
 }
 
@@ -206,19 +207,20 @@ body{
     color:wheat;
     font-style:italic;
 }
-.btn1{
+.btn1, .check-out button {
     border-radius:5px;
     margin: 50px auto;
     color:rgb(224, 28, 28);
     border:1px solid rgb(228, 167, 34) ;
-    background:linear-gradient(to left, transparent 50%,rgb(228, 167, 34) 50%);
+    background:linear-gradient(to left, transparent -50%,rgb(228, 167, 34) 60%);
     background-size: 200%;
     background-position:right;
     transition: background-position 0.5s;
    
 }
 
-.btn1:hover{
+.btn1:hover,
+.check-out button:hover{
    background-position:left;
   color:rgb(224, 28, 34);
   
@@ -271,6 +273,14 @@ body{
     background:var(--icon-color);
    transform:translateX(-50%) rotate(45deg);
   }
+
+  .cart-box::before{
+
+  
+    right:-400px;
+   transform:translateX(-200%) rotate(45deg);
+
+ }
   .search-box.active{
     visibility:visible;
   }
@@ -300,10 +310,11 @@ body{
 } */
 .cart-box{
    position: absolute;
-   right:-105%;
+   right:-300%;
    top:200%;
-   width:300px;
-   display:;
+   width:280px;
+   min-height: 100vh;
+   display:none;
 }
 .cart-box::before{
    background:grey;
@@ -312,23 +323,24 @@ body{
   #cartAmount{
    position:absolute;
    color:red;
-   font-size: 22px;
+   font-size: 18px;
    font-weight: bold;
    top:-14px; right:-4px;
+
   }
     .cart-info{
       transition: 0.9s ease-in-out;
       padding:10px 15px;
       background-color:grey;
-      
+
   }
-  .item{
-   display:flex;
-   align-items:center;
-   justify-content: space-between;
-   flex-wrap: wrap;
+  .cart-info .item{
+ display: flex;
+ align-items: center;
+ justify-content: space-around;
+   flex-wrap:wrap;
    margin-bottom:8px;
-   padding:0 20px;
+   padding:0 10px;
   }
   .cart-info image{
    width:70px;
@@ -353,13 +365,27 @@ body{
   }
 
   .total{
-   padding-top:rem;
+   padding-top:10px;
+
+  }
+  .menu{
+     display: flex;
+     align-items: center;
+     justify-content: space-between;
   }
   .check-out{
-   margin-top: 8px;
+   margin-top: 20px;
+   display: flex;
+   align-items: center;
+   justify-content: space-between;
   }
-  .check-out button{
+  #checkBtn{
    width: 100%;
+   margin:0;
+  }
+  #orderBtn, #clearBtn{
+   margin:0;
+   padding: 10px 15px;
  
   }
 
