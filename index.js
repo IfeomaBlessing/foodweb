@@ -114,3 +114,14 @@ openIcon.addEventListener('click', function(){
     openIcon.style.display = 'block';
     navList.classList.toggle("active");
  })
+
+ let btnContainers = document.querySelectorAll(".filter-btn");
+
+ btnContainers.forEach(function(btnContainer){
+    btnContainer.addEventListener("click", function(){
+        btnContainers.forEach(function(subBtns){
+            subBtns.classList.remove("active");
+        })
+        btnContainer.classList.add("active");
+    })
+ })

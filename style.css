@@ -275,8 +275,6 @@ body{
   }
 
   .cart-box::before{
-
-  
     right:-400px;
    transform:translateX(-200%) rotate(45deg);
 
@@ -310,58 +308,65 @@ body{
 } */
 .cart-box{
    position: absolute;
-   right:-300%;
+   right:-500%;
    top:200%;
-   width:280px;
-   min-height: 100vh;
    display:none;
+   
 }
 .cart-box::before{
    background:grey;
-   right:5px;
+   right:28px;
   }
   #cartAmount{
    position:absolute;
    color:red;
-   font-size: 18px;
-   font-weight: bold;
-   top:-14px; right:-4px;
+   font-size: 16px;
+   z-index: -1;
+   top:-12px; right:-6px;
 
   }
     .cart-info{
       transition: 0.9s ease-in-out;
-      padding:10px 15px;
+      padding:15px 8px;
       background-color:grey;
+      overflow-y:auto;
+      width:230px;
+      height:350px;
 
   }
   .cart-info .item{
+   
  display: flex;
  align-items: center;
- justify-content: space-around;
+ justify-content: space-between;
    flex-wrap:wrap;
    margin-bottom:8px;
-   padding:0 10px;
+   padding:;
+  }
+  .cancel i{
+   font-size:10px;
   }
   .cart-info image{
    width:70px;
   }
   
 .cart-info img{
-   width:70px;
-   height:px;
+   width:60px;
+   height:40px;
    border:2px solid rgb(120, 89, 10);
    border-radius:5px;
 }
+
   #quantity{
    display: flex;
-   align-items: center;
+   align-items:flex-start;
   }
   #quantity button{
    color: wheat;
-   padding:5px;
-   margin:0 5px;
+   padding:0 5px;
+   margin:px;
    background:transparent;
-   font-size: 20px;
+   font-size:12px;
   }
 
   .total{
@@ -382,10 +387,11 @@ body{
   #checkBtn{
    width: 100%;
    margin:0;
+   padding:10px 5px;
   }
   #orderBtn, #clearBtn{
    margin:0;
-   padding: 10px 15px;
+   padding:10px 5px;
  
   }
 
@@ -603,6 +609,7 @@ body{
     height:80px;
     border:2px solid rgb(120, 89, 10);
     border-radius:5px;
+    cursor: pointer;
  }
  .single-item .cartIcon{
    position: absolute;

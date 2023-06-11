@@ -165,7 +165,7 @@ let checkOut = document.getElementById("checkOut");
 
 
 window.addEventListener("DOMContentLoaded",function(){
-showMenu();
+showMenu(Menus);
 
 });
 
@@ -189,7 +189,7 @@ filterBtns.forEach(function(filterBtn){
 
  
 
-function showMenu(){
+function showMenu(Menus){
     return(itemCenter.innerHTML = Menus.map(function(menu){
        return `
        <div class="single-item flex-row">
