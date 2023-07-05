@@ -103,17 +103,21 @@ let closeIcon = document.getElementById("close-menu");
 let navList = document.getElementById("nav-list");
 
 
+
 openIcon.addEventListener('click', function(){
     closeIcon.style.display = 'block';
     openIcon.style.display = 'none';
     navList.classList.toggle("active");
+  
  })
 
  closeIcon.addEventListener('click', function(){
     closeIcon.style.display = 'none';
     openIcon.style.display = 'block';
     navList.classList.toggle("active");
+   
  })
+ 
 
  let btnContainers = document.querySelectorAll(".filter-btn");
 
