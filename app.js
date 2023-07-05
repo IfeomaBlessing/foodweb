@@ -147,7 +147,7 @@ const Menus =[
         id : 19,
         title : "Noodles Fish",
         category : "main course",
-        price : 15.99,
+        price : 15,
         imgSrc : "./images/pix3.jpg",
         desc : "Lorem ipsum dolor sit amet consectetur adipisicing elit."
     }
@@ -227,8 +227,8 @@ let cart = JSON.parse(localStorage.getItem("Objects")) || [];
 
 function addToCart(id){
       if(cart.some((menuSelected)=>menuSelected.id === id)){
-         const addItem = cart.find((y)=> y.id=== id);
-         addItem.numberOfUnit +=1;
+         const menuItem = cart.find((y)=> y.id=== id);
+         menuItem.numberOfUnit +=1;
        
       }
       else{
@@ -287,7 +287,7 @@ function renderCartItems(){
             <div class="item" id= "item">
             <div class="cancel">
             <i class="fa-solid fa-trash-can" onclick = "removeMenu(${x.id})"></i>
-        </div>
+           </div>
                      
             <div class="image">
               <img src="${x.imgSrc}">
