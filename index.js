@@ -4,8 +4,9 @@ let slide = document.querySelectorAll(".slide");
 let searchBtn = document.querySelector(".searchBtn");
 let searchBox = document.querySelector(".search-box");
 let cartBtn = document.querySelector(".cartBtn");
-let cartBox = document.querySelector(".cart-box");
 let moonIcon = document.querySelector(".moonIcon");
+let cartModal = document.getElementById("cartModal");
+let closeCart = document.querySelector(".closeCart");
 
 
 // FOR THE SLIDES, INDEX IS ZERO
@@ -40,19 +41,24 @@ searchBtn.addEventListener("click",function(){
 });
 
 cartBtn.addEventListener("click",function(){
-    cartBox.classList.toggle("active");
+    cartBtn.classList.toggle("active");
 
-    if(cartBox.classList.contains("active")){
-         cartBtn.classList.remove("fa-cart-shopping");
-         cartBtn.classList.add("fa-xmark");
-         cartBox.style.display ="block";
+    if(cartBtn.classList.contains("active")){
+         cartModal.classList.add("active")
+         document.body.classList.add('modal-open');
     }
-    else {
-        cartBtn.classList.add("fa-cart-shopping");
-        cartBtn.classList.remove("fa-xmark");
-        cartBox.style.display ="none";
-    }
+
+     renderCartItems();
 });
+
+
+closeCart.addEventListener("click",function(){
+        cartModal.classList.remove("active")
+        document.body.classList.remove('modal-open');
+    
+});
+
+
 
     // TO SAVE THE MODE USER CLICKS EVEN AFTER REFRESHING OR CLOSING PAGE
 if(localStorage.getItem("mode") == null){
@@ -103,7 +109,6 @@ let closeIcon = document.getElementById("close-menu");
 let navList = document.getElementById("nav-list");
 
 
-
 openIcon.addEventListener('click', function(){
     closeIcon.style.display = 'block';
     openIcon.style.display = 'none';
@@ -129,3 +134,7 @@ openIcon.addEventListener('click', function(){
         btnContainer.classList.add("active");
     })
  })
+
+
+
+

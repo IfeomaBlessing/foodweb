@@ -160,7 +160,7 @@ let filterBtns = document.querySelectorAll(".filter-btn");
 let cartItem = document.getElementById("cartItem");
 let label= document.getElementById("label");
 let totalMenu = document.getElementById("total-menu");
-let totalAmount = document.getElementById("total-amount");
+let totalAmount = document.getElementById("total-cost");
 let checkOut = document.getElementById("checkOut");
 
 
@@ -293,17 +293,17 @@ function renderCartItems(){
               <img src="${x.imgSrc}">
           </div>
  
-          <div id="unit-price">
+          <div id="unit-price" class="unit-price">
               <p>$${x.price}</p>
           </div>
  
-          <div id="quantity">
+          <div id="quantity" class="quantity">
               <button onclick = "decrement(${x.id})">-</button>
               <p>${x.numberOfUnit}</p>
               <button onclick = "increment(${x.id})">+</button>
           </div> 
  
-          <div id="subtotal-price">
+          <div id="subtotal-price"  class="subtotal-price">
           <p>$${x.numberOfUnit * x.price}</p>
       </div>
                  
@@ -320,12 +320,23 @@ function renderCartItems(){
         `
         checkOut.innerHTML = ` <button id="checkBtn"><a href="#menu"> Check Out Our Menu</a></button> ` 
 
-        totalAmount.innerHTML =`  `
+        totalAmount.innerHTML = `  `
        
-        totalMenu.innerHTML =`  `
+        totalMenu.innerHTML = `  `
 
+    //  attach listener immediately after rendering
+
+         let checkBtn = document.getElementById("checkBtn");
+        checkBtn.addEventListener("click",function(){
+              cartModal.classList.remove("active")
+        document.body.classList.remove('modal-open');       
+ 
+})
     };
 }
+
+
+
 
 function removeMenu(id){
     cart = cart.filter((x)=>x.id !== id)
@@ -357,14 +368,16 @@ function totalPrice(){
        return  x.numberOfUnit * x.price;
         }).reduce((a,b)=>a + b, 0);
           
-        totalAmount.innerHTML =`
+        totalAmount.innerHTML = `
         <div class = "menu">
-        <h4 id="total-menu">Total Menu:</h4>
-        <h4>${totalPrice}</h4>
+        <h4 id="total-menu">Total Cost: </h4>
+        <h4> $${totalPrice}</h4>
     </div>
         `
-        checkOut.innerHTML = ` <button id="orderBtn" onclick = "checkout()">Check Out</button>
-        <button id="clearBtn" onclick = "clearCart()">Clear Cart</button> ` 
+        checkOut.innerHTML = ` 
+        <button id="orderBtn" onclick = "checkout()">Check Out</button>
+        <button id="clearBtn" onclick = "clearCart()">Clear Cart</button>
+         ` 
 
 
     }
@@ -380,13 +393,13 @@ function totalItem(){
        return  x.numberOfUnit;
         }).reduce((a,b)=>a + b, 0);
           
-        totalMenu.innerHTML =`
+        totalMenu.innerHTML = `
        
 
         <div class = "menu">
-                            <h4 id="total-menu">Total Menu:</h4>
-                            <h4>${totalItem}</h4>
-                        </div>
+        <h4 id="total-menu">Total Menu: </h4>
+        <h4>  ${totalItem}</h4>
+            </div>
         `
  
  
@@ -406,9 +419,20 @@ function checkout(){
         totalMenu.innerHTML =`  `
         checkOut.innerHTML = `  ` 
 
+        
         calculation();
      localStorage.setItem("Objects", JSON.stringify(cart));
+
+       // Close modal after 2 seconds (2000ms)
+    setTimeout(() => {
+          cartModal.classList.remove("active")
+        document.body.classList.remove("modal-open");
+        
+    }, 2000);
+
+    closeCart.style.display = "none"
 }
+
 
 function clearCart(){
     cart = [];
